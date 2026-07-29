@@ -4,6 +4,7 @@
  * Description: Bannière de consentement aux cookies ultra simple : consentement global Accepter/Refuser, révocation, textes multilingues (WPML/Polylang, EN/FR/ES par défaut), blocage automatique des contenus tiers (YouTube, Google Maps…) et API JavaScript pour déclenchements conditionnels.
  * Version: 1.0.0
  * Author: Guillaume
+ * License: MIT
  */
 
 if (! defined('ABSPATH')) {

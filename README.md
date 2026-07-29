@@ -115,3 +115,7 @@ Les textes sont stockés **par langue** dans une seule option (`mcb_settings`). 
 - Les iframes injectés en JavaScript après le chargement de la page (lazy-load maison, constructeurs de pages) ne sont pas interceptés par la réécriture serveur — utiliser l'événement `mcb:consent` pour ces cas.
 - Après une révocation, les contenus tiers déjà chargés restent affichés jusqu'au prochain chargement de page (aucun cookie tiers supplémentaire n'est cependant déposé ensuite).
 - La détection des hôtes est une recherche de sous-chaîne dans l'URL du `src`.
+
+## Licence
+
+[MIT](LICENSE)
