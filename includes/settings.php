@@ -51,13 +51,40 @@ function mcb_default_settings(): array
         'show_revoke_button' => 1,
         'blocking_enabled'   => 1,
         'blocked_hosts'      => implode("\n", [
+            // Vidéo
             'youtube.com',
             'youtube-nocookie.com',
             'youtu.be',
+            'player.vimeo.com',
+            'i.vimeocdn.com',
+            'dailymotion.com/embed',
+            'player.twitch.tv',
+            // Cartes
             'google.com/maps',
             'maps.google.com',
             'maps.googleapis.com',
-            'player.vimeo.com',
+            'openstreetmap.org',
+            // Réseaux sociaux
+            'facebook.com/plugins',
+            'connect.facebook.net',
+            'instagram.com',
+            'platform.twitter.com',
+            'static.ads-twitter.com',
+            'platform.linkedin.com',
+            'pinterest.com/js/pinit.js',
+            'tiktok.com',
+            'snapchat.com',
+            // Audio
+            'open.spotify.com',
+            'w.soundcloud.com',
+            // Mesure d'audience et publicité
+            'googletagmanager.com',
+            'google-analytics.com',
+            'googlesyndication.com',
+            'doubleclick.net',
+            'static.hotjar.com',
+            // Divers
+            'disqus.com/embed',
         ]),
         'colors'             => [
             'banner_bg'        => '#1f2937',

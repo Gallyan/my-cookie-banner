@@ -5,7 +5,7 @@ Bannière de consentement aux cookies ultra simple pour WordPress, sans pub, san
 - Consentement global **Accepter / Refuser**, révocable à tout moment
 - Textes et couleurs personnalisables depuis **Réglages → Cookie Banner**
 - Multilingue : anglais, français et espagnol par défaut, compatible **WPML** et **Polylang** (les langues actives du site apparaissent automatiquement dans les réglages)
-- **Blocage automatique** des iframes et scripts tiers (YouTube, Google Maps, Vimeo…) tant que le consentement n'est pas donné, avec placeholder « Accepter les cookies et afficher »
+- **Blocage automatique** des iframes et scripts tiers tant que le consentement n'est pas donné, avec placeholder « Accepter les cookies et afficher » — vidéo (YouTube, Vimeo, Dailymotion, Twitch), cartes (Google Maps, OpenStreetMap), réseaux sociaux (Facebook, Instagram, X/Twitter, LinkedIn, Pinterest, TikTok, Snapchat), audio (Spotify, SoundCloud), mesure d'audience et publicité (Google Tag Manager, Google Analytics, AdSense, Hotjar), Disqus… Liste modifiable dans les réglages ; les captchas ne sont volontairement pas bloqués pour ne pas casser les formulaires
 - Variable et événements **JavaScript** + helpers **PHP** pour déclencher n'importe quoi selon le consentement
 - Pont automatique vers la **WP Consent API** si elle est présente
 
