@@ -9,7 +9,8 @@ function mcb_default_texts(): array
 {
     return [
         'en' => [
-            'message'            => 'We use cookies to improve your experience and to embed third-party content (YouTube videos, Google Maps…). You can accept or decline.',
+            'message'            => 'We use cookies to improve your experience and to embed third-party content'
+                . ' (YouTube videos, Google Maps…). You can accept or decline.',
             'accept'             => 'Accept',
             'refuse'             => 'Decline',
             'revoke'             => 'Cookie preferences',
@@ -19,7 +20,8 @@ function mcb_default_texts(): array
             'privacy_url'        => '',
         ],
         'fr' => [
-            'message'            => 'Nous utilisons des cookies pour améliorer votre expérience et intégrer des contenus tiers (vidéos YouTube, cartes Google Maps…). Vous pouvez accepter ou refuser.',
+            'message'            => 'Nous utilisons des cookies pour améliorer votre expérience et intégrer'
+                . ' des contenus tiers (vidéos YouTube, cartes Google Maps…). Vous pouvez accepter ou refuser.',
             'accept'             => 'Accepter',
             'refuse'             => 'Refuser',
             'revoke'             => 'Préférences cookies',
@@ -29,7 +31,8 @@ function mcb_default_texts(): array
             'privacy_url'        => '',
         ],
         'es' => [
-            'message'            => 'Utilizamos cookies para mejorar su experiencia e integrar contenidos de terceros (vídeos de YouTube, mapas de Google Maps…). Puede aceptar o rechazar.',
+            'message'            => 'Utilizamos cookies para mejorar su experiencia e integrar contenidos'
+                . ' de terceros (vídeos de YouTube, mapas de Google Maps…). Puede aceptar o rechazar.',
             'accept'             => 'Aceptar',
             'refuse'             => 'Rechazar',
             'revoke'             => 'Preferencias de cookies',
@@ -248,14 +251,14 @@ function mcb_sanitize_settings($input): array
         }
 
         $clean['texts'][$lang] = [
-            'message'            => wp_kses_post($fields['message'] ?? ''),
-            'accept'             => sanitize_text_field($fields['accept'] ?? ''),
-            'refuse'             => sanitize_text_field($fields['refuse'] ?? ''),
-            'revoke'             => sanitize_text_field($fields['revoke'] ?? ''),
-            'placeholder'        => sanitize_text_field($fields['placeholder'] ?? ''),
-            'placeholder_button' => sanitize_text_field($fields['placeholder_button'] ?? ''),
-            'privacy_label'      => sanitize_text_field($fields['privacy_label'] ?? ''),
-            'privacy_url'        => esc_url_raw($fields['privacy_url'] ?? ''),
+            'message'            => wp_kses_post((string) ($fields['message'] ?? '')),
+            'accept'             => sanitize_text_field((string) ($fields['accept'] ?? '')),
+            'refuse'             => sanitize_text_field((string) ($fields['refuse'] ?? '')),
+            'revoke'             => sanitize_text_field((string) ($fields['revoke'] ?? '')),
+            'placeholder'        => sanitize_text_field((string) ($fields['placeholder'] ?? '')),
+            'placeholder_button' => sanitize_text_field((string) ($fields['placeholder_button'] ?? '')),
+            'privacy_label'      => sanitize_text_field((string) ($fields['privacy_label'] ?? '')),
+            'privacy_url'        => esc_url_raw((string) ($fields['privacy_url'] ?? '')),
         ];
     }
 
@@ -309,7 +312,10 @@ function mcb_render_settings_page(): void
                     <th scope="row">Activer la bannière</th>
                     <td>
                         <label>
-                            <input type="checkbox" name="mcb_settings[enabled]" value="1" <?php checked($settings['enabled']); ?>>
+                            <input type="checkbox"
+                                   name="mcb_settings[enabled]"
+                                   value="1"
+                                   <?php checked($settings['enabled']); ?>>
                             Afficher la bannière et appliquer le blocage sur le site
                         </label>
                     </td>
@@ -318,10 +324,18 @@ function mcb_render_settings_page(): void
                     <th scope="row"><label for="mcb-position">Position</label></th>
                     <td>
                         <select id="mcb-position" name="mcb_settings[position]">
-                            <option value="bottom" <?php selected($settings['position'], 'bottom'); ?>>Barre en bas</option>
-                            <option value="top" <?php selected($settings['position'], 'top'); ?>>Barre en haut</option>
-                            <option value="bottom-left" <?php selected($settings['position'], 'bottom-left'); ?>>Carte en bas à gauche</option>
-                            <option value="bottom-right" <?php selected($settings['position'], 'bottom-right'); ?>>Carte en bas à droite</option>
+                            <option value="bottom" <?php selected($settings['position'], 'bottom'); ?>>
+                                Barre en bas
+                            </option>
+                            <option value="top" <?php selected($settings['position'], 'top'); ?>>
+                                Barre en haut
+                            </option>
+                            <option value="bottom-left" <?php selected($settings['position'], 'bottom-left'); ?>>
+                                Carte en bas à gauche
+                            </option>
+                            <option value="bottom-right" <?php selected($settings['position'], 'bottom-right'); ?>>
+                                Carte en bas à droite
+                            </option>
                         </select>
                     </td>
                 </tr>
@@ -336,8 +350,12 @@ function mcb_render_settings_page(): void
                     <th scope="row">Bouton de révocation flottant</th>
                     <td>
                         <label>
-                            <input type="checkbox" name="mcb_settings[show_revoke_button]" value="1" <?php checked($settings['show_revoke_button']); ?>>
-                            Afficher un bouton 🍪 flottant pour modifier son choix (sinon, utiliser le shortcode <code>[mcb_revoke]</code>)
+                            <input type="checkbox"
+                                   name="mcb_settings[show_revoke_button]"
+                                   value="1"
+                                   <?php checked($settings['show_revoke_button']); ?>>
+                            Afficher un bouton 🍪 flottant pour modifier son choix
+                            (sinon, utiliser le shortcode <code>[mcb_revoke]</code>)
                         </label>
                     </td>
                 </tr>
@@ -354,26 +372,43 @@ function mcb_render_settings_page(): void
                     $settings['texts'][$lang] ?? []
                 );
                 ?>
-                <details <?php echo $index === 0 ? 'open' : ''; ?> style="margin-bottom: 1em; border: 1px solid #c3c4c7; padding: 0.5em 1em; background: #fff;">
-                    <summary style="cursor: pointer; font-weight: 600; text-transform: uppercase;"><?php echo esc_html($lang); ?></summary>
+                <details
+                    <?php echo $index === 0 ? 'open' : ''; ?>
+                    style="margin-bottom: 1em; border: 1px solid #c3c4c7; padding: 0.5em 1em; background: #fff;">
+                    <summary style="cursor: pointer; font-weight: 600; text-transform: uppercase;">
+                        <?php echo esc_html($lang); ?>
+                    </summary>
                     <table class="form-table" role="presentation">
                         <?php foreach ($textLabels as $key => $label) :
                             $fieldId = "mcb-{$lang}-{$key}";
                             $fieldName = "mcb_settings[texts][{$lang}][{$key}]";
                             ?>
                             <tr>
-                                <th scope="row"><label for="<?php echo esc_attr($fieldId); ?>"><?php echo esc_html($label); ?></label></th>
+                                <th scope="row">
+                                    <label for="<?php echo esc_attr($fieldId); ?>">
+                                        <?php echo esc_html($label); ?>
+                                    </label>
+                                </th>
                                 <td>
                                     <?php if ($key === 'message') : ?>
-                                        <textarea id="<?php echo esc_attr($fieldId); ?>" name="<?php echo esc_attr($fieldName); ?>"
-                                                  rows="3" class="large-text"><?php echo esc_textarea($texts[$key]); ?></textarea>
+                                        <textarea
+                                            id="<?php echo esc_attr($fieldId); ?>"
+                                            name="<?php echo esc_attr($fieldName); ?>"
+                                            rows="3"
+                                            class="large-text"><?php echo esc_textarea($texts[$key]); ?></textarea>
                                     <?php elseif ($key === 'privacy_url') : ?>
-                                        <input type="url" id="<?php echo esc_attr($fieldId); ?>" name="<?php echo esc_attr($fieldName); ?>"
-                                               value="<?php echo esc_attr($texts[$key]); ?>" class="regular-text"
+                                        <input type="url"
+                                               id="<?php echo esc_attr($fieldId); ?>"
+                                               name="<?php echo esc_attr($fieldName); ?>"
+                                               value="<?php echo esc_attr($texts[$key]); ?>"
+                                               class="regular-text"
                                                placeholder="<?php echo esc_attr(get_privacy_policy_url()); ?>">
                                     <?php else : ?>
-                                        <input type="text" id="<?php echo esc_attr($fieldId); ?>" name="<?php echo esc_attr($fieldName); ?>"
-                                               value="<?php echo esc_attr($texts[$key]); ?>" class="regular-text">
+                                        <input type="text"
+                                               id="<?php echo esc_attr($fieldId); ?>"
+                                               name="<?php echo esc_attr($fieldName); ?>"
+                                               value="<?php echo esc_attr($texts[$key]); ?>"
+                                               class="regular-text">
                                     <?php endif; ?>
                                 </td>
                             </tr>
@@ -384,14 +419,19 @@ function mcb_render_settings_page(): void
 
             <p>
                 <label for="mcb-new-lang">Ajouter une langue (code ISO, ex. <code>de</code>) :</label>
-                <input type="text" id="mcb-new-lang" name="mcb_settings[new_lang]" value="" class="small-text" maxlength="10">
+                <input type="text" id="mcb-new-lang" name="mcb_settings[new_lang]"
+                       value="" class="small-text" maxlength="10">
             </p>
 
             <h2>Couleurs</h2>
             <table class="form-table" role="presentation">
                 <?php foreach ($colorLabels as $key => $label) : ?>
                     <tr>
-                        <th scope="row"><label for="mcb-color-<?php echo esc_attr($key); ?>"><?php echo esc_html($label); ?></label></th>
+                        <th scope="row">
+                            <label for="mcb-color-<?php echo esc_attr($key); ?>">
+                                <?php echo esc_html($label); ?>
+                            </label>
+                        </th>
                         <td>
                             <input type="color" id="mcb-color-<?php echo esc_attr($key); ?>"
                                    name="mcb_settings[colors][<?php echo esc_attr($key); ?>]"
@@ -407,7 +447,10 @@ function mcb_render_settings_page(): void
                     <th scope="row">Blocage automatique</th>
                     <td>
                         <label>
-                            <input type="checkbox" name="mcb_settings[blocking_enabled]" value="1" <?php checked($settings['blocking_enabled']); ?>>
+                            <input type="checkbox"
+                                   name="mcb_settings[blocking_enabled]"
+                                   value="1"
+                                   <?php checked($settings['blocking_enabled']); ?>>
                             Bloquer les iframes et scripts des hôtes listés tant que les cookies ne sont pas acceptés
                         </label>
                     </td>
@@ -415,16 +458,26 @@ function mcb_render_settings_page(): void
                 <tr>
                     <th scope="row"><label for="mcb-blocked-hosts">Hôtes bloqués</label></th>
                     <td>
-                        <textarea id="mcb-blocked-hosts" name="mcb_settings[blocked_hosts]" rows="8"
-                                  class="large-text code"><?php echo esc_textarea($settings['blocked_hosts']); ?></textarea>
-                        <p class="description">Un motif par ligne, recherché dans l'URL des iframes et scripts (ex. <code>youtube.com</code>, <code>google.com/maps</code>).</p>
+                        <textarea
+                            id="mcb-blocked-hosts"
+                            name="mcb_settings[blocked_hosts]"
+                            rows="8"
+                            class="large-text code"><?php echo esc_textarea($settings['blocked_hosts']); ?></textarea>
+                        <p class="description">
+                            Un motif par ligne, recherché dans l'URL des iframes et scripts
+                            (ex. <code>youtube.com</code>, <code>google.com/maps</code>).
+                        </p>
                     </td>
                 </tr>
             </table>
 
             <h2>CSS personnalisé</h2>
-            <textarea name="mcb_settings[custom_css]" rows="8" class="large-text code"
-                      placeholder=".mcb-banner { font-size: 15px; }"><?php echo esc_textarea($settings['custom_css']); ?></textarea>
+            <textarea
+                name="mcb_settings[custom_css]"
+                rows="8"
+                class="large-text code"
+                placeholder=".mcb-banner { font-size: 15px; }"
+            ><?php echo esc_textarea($settings['custom_css']); ?></textarea>
 
             <?php submit_button(); ?>
         </form>

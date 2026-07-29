@@ -11,9 +11,17 @@ if (! defined('ABSPATH')) {
  */
 function mcb_blocked_hosts(): array
 {
-    $hosts = array_filter(array_map('trim', explode("\n", mcb_get_settings()['blocked_hosts'])));
+    static $hosts = null;
 
-    return apply_filters('mcb_blocked_hosts', array_values($hosts));
+    if ($hosts !== null) {
+        return $hosts;
+    }
+
+    $parsed = array_filter(array_map('trim', explode("\n", mcb_get_settings()['blocked_hosts'])));
+
+    $hosts = apply_filters('mcb_blocked_hosts', array_values($parsed));
+
+    return $hosts;
 }
 
 function mcb_src_is_blocked(string $src): bool
@@ -71,8 +79,12 @@ function mcb_filter_output(string $html): string
         return $html;
     }
 
-    $html = preg_replace_callback('#<iframe\b[^>]*>#is', 'mcb_block_iframe_tag', $html);
-    $html = preg_replace_callback('#<script\b[^>]*\bsrc\s*=\s*["\'][^"\']+["\'][^>]*>#is', 'mcb_block_script_tag', $html);
+    $html = preg_replace_callback('#<iframe\b[^>]*>#is', 'mcb_block_iframe_tag', $html) ?? $html;
+    $html = preg_replace_callback(
+        '#<script\b[^>]*\bsrc\s*=\s*["\'][^"\']+["\'][^>]*>#is',
+        'mcb_block_script_tag',
+        $html
+    ) ?? $html;
 
     return $html;
 }

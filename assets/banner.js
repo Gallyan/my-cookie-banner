@@ -155,6 +155,10 @@
             syncWpConsentApi('refused');
             render();
             fire('pending');
+            var banner = document.getElementById('mcb-banner');
+            if (banner) {
+                banner.focus();
+            }
         },
         onChange: function (callback) {
             document.addEventListener('mcb:consent', function (event) {

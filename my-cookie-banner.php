@@ -1,10 +1,14 @@
 <?php
+
 /**
  * Plugin Name: My Cookie Banner
- * Description: Bannière de consentement aux cookies ultra simple : consentement global Accepter/Refuser, révocation, textes multilingues (WPML/Polylang, EN/FR/ES par défaut), blocage automatique des contenus tiers (YouTube, Google Maps…) et API JavaScript pour déclenchements conditionnels.
+ * Description: Bannière de cookies : consentement, révocation, multilingue (WPML/Polylang), blocage des contenus tiers.
  * Version: 1.0.0
  * Author: Guillaume
  * License: MIT
+ * Requires at least: 5.4
+ * Requires PHP: 7.4
+ * Update URI: false
  */
 
 if (! defined('ABSPATH')) {

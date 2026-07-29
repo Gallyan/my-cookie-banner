@@ -11,6 +11,8 @@ Bannière de consentement aux cookies ultra simple pour WordPress, sans pub, san
 
 ## Installation
 
+Prérequis : WordPress 5.4+ et PHP 7.4+.
+
 ### En mu-plugin (recommandé)
 
 WordPress ne charge pas les sous-répertoires de `mu-plugins`, il faut donc un fichier chargeur :
@@ -65,6 +67,26 @@ document.addEventListener('mcb:consent', function (event) {
 // Ou via le raccourci :
 window.myCookieBanner.onChange(function (detail) {
     console.log(detail.status);
+});
+```
+
+Attention : un script qui s'abonne à `mcb:consent` depuis son propre écouteur `DOMContentLoaded` peut manquer l'émission initiale (déjà passée à ce moment-là). S'abonner au niveau racine du script, ou vérifier `window.mcbConsentStatus` au démarrage en plus de l'abonnement :
+
+```js
+function applyConsent(status) {
+    if (status === 'accepted') {
+        // charger une carte, un tracker, une vidéo…
+    }
+}
+
+// Prend en compte l'état déjà connu…
+if (window.mcbConsentStatus) {
+    applyConsent(window.mcbConsentStatus);
+}
+
+// …puis les changements ultérieurs
+document.addEventListener('mcb:consent', function (event) {
+    applyConsent(event.detail.status);
 });
 ```
 
