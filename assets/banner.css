@@ -107,24 +107,27 @@
 
 .mcb-revoke {
     position: fixed;
-    left: 1rem;
+    left: 0;
     bottom: 1rem;
     z-index: 99998;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border: 0;
-    border-radius: 50%;
+    border-radius: 0 50% 50% 0;
     background: var(--mcb-banner-bg, #1f2937);
-    font-size: 1.375rem;
+    font-size: 1rem;
     line-height: 1;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.15s ease;
+    opacity: 0.4;
+    transform: translateX(-45%);
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .mcb-revoke:hover,
 .mcb-revoke:focus {
-    transform: scale(1.1);
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .mcb-revoke-link {

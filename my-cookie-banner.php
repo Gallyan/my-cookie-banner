@@ -3,7 +3,7 @@
 /**
  * Plugin Name: My Cookie Banner
  * Description: Bannière de cookies : consentement, révocation, multilingue (WPML/Polylang), blocage des contenus tiers.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Guillaume
  * License: MIT
  * Requires at least: 5.4
@@ -15,7 +15,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-define('MCB_VERSION', '1.0.0');
+define('MCB_VERSION', '1.0.1');
 define('MCB_DIR', __DIR__);
 define('MCB_COOKIE_NAME', 'mcb_consent');
 
